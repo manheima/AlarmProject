@@ -1,0 +1,16 @@
+# shell works in /tmp
+-----------------------------------------------------
+#to view last 2 cron jobs done
+grep cron /var/log/syslog | tail -n 2 
+-----------------------------------------------------
+#Shell to get path user and environment (put in /tmp)
+
+#!/bin/bash
+echo $(whoami) > /tmp/userpathshell.txt
+echo $SHELL >> /tmp/userpathshell.txt
+echo $PATH >> /tmp/userpathshell.txt
+env >> /tmp/userpathshell.txt
+export DISPLAY=:0
+------------------------------------------------------
+# to edit root crontab so you can run any jobs
+sudo crontab -e 

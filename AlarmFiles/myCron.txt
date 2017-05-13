@@ -1,0 +1,12 @@
+#Alarm set for 14:45 on Friday - Saturday 
+45 14 * * 5-6 /home/pi/Documents/Alarm\ Project/AlarmFiles/myCronJob.sh 6
+
+#Alarm set for 23:23 on Tuesday , Wednesday , Thursday 
+23 23 * * 2,3,4 /home/pi/Documents/Alarm\ Project/AlarmFiles/myCronJob.sh 5
+
+#Alarm set for 23:11 on Monday Tuesday Wednesday 
+11 23 * * 123 /home/pi/Documents/Alarm\ Project/AlarmFiles/myCronJob.sh 1
+
+#Alarm set for 23:42 on Monday Friday Thursday 
+42 23 * * 154 /home/pi/Documents/Alarm\ Project/AlarmFiles/myCronJob.sh 1
+
