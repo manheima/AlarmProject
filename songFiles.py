@@ -3,7 +3,7 @@ import os
 
 #def listFiles
 def listSongs():
-    songList = os.listdir("/home/pi/Documents/Alarm Project/Songs")
+    songList = os.listdir("/home/pi/Documents/AlarmProject/Songs")
     songList.sort()
     print ""
     for index, song in enumerate(songList):
@@ -13,7 +13,7 @@ def listSongs():
 #def playFile
 def playSong():
     listSongs()
-    songList = os.listdir("/home/pi/Documents/Alarm Project/Songs")
+    songList = os.listdir("/home/pi/Documents/AlarmProject/Songs")
     songList.sort()
     while True:
         songIndex = int(raw_input("Pick a song: "))
@@ -21,21 +21,21 @@ def playSong():
             break
         else:
             print "Please enter song Index: "
-    shellCom = "omxplayer -o local \"/home/pi/Documents/Alarm Project/Songs/"+songList[songIndex]+"\""
+    shellCom = "omxplayer -o local \"/home/pi/Documents/AlarmProject/Songs/"+songList[songIndex]+"\""
     os.system(shellCom)
 
 def playAlarm(songIndex):
-    songList = os.listdir("/home/pi/Documents/Alarm Project/Songs")
+    songList = os.listdir("/home/pi/Documents/AlarmProject/Songs")
     songList.sort()
     if songIndex >= len(songList) or songIndex < 0:
         print "Error: Invalid Index"
         return
-    shellCom = "lxterminal -e omxplayer -o local \"/home/pi/Documents/Alarm Project/Songs/"+songList[songIndex]+"\""
+    shellCom = "lxterminal -e omxplayer -o local \"/home/pi/Documents/AlarmProject/Songs/"+songList[songIndex]+"\""
     os.system(shellCom)
 
 def chooseSong():
     listSongs()
-    songList = os.listdir("/home/pi/Documents/Alarm Project/Songs")
+    songList = os.listdir("/home/pi/Documents/AlarmProject/Songs")
     songList.sort()
     while True:
         songIndex = int(raw_input("Pick a song: "))
@@ -46,7 +46,7 @@ def chooseSong():
 
 def deleteSong():
     listSongs()
-    songList = os.listdir("/home/pi/Documents/Alarm Project/Songs")
+    songList = os.listdir("/home/pi/Documents/AlarmProject/Songs")
     songList.sort()
     while True:
         songIndex = int(raw_input("Pick a song: "))
@@ -55,4 +55,4 @@ def deleteSong():
         else:
             print "Please enter song Index to delete: "
     print "Deleting: " + songList[songIndex]
-    os.remove("/home/pi/Documents/Alarm Project/Songs/"+songList[songIndex])
+    os.remove("/home/pi/Documents/AlarmProject/Songs/"+songList[songIndex])

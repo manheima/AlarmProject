@@ -70,7 +70,7 @@ def editAlarms():
 def viewAlarms():
     print " "
     #os.system("crontab -l")
-    with open('/home/pi/Documents/Alarm Project/AlarmFiles/myCron.txt', 'r') as f:
+    with open('/home/pi/Documents/AlarmProject/AlarmFiles/myCron.txt', 'r') as f:
         count = 0
         for line in f:
             if count%3 ==0:
@@ -164,7 +164,7 @@ def deleteAlarm():
             print "Unknown option selected"
 
 def deleteAllAlarms():
-    open('/home/pi/Documents/Alarm Project/AlarmFiles/myCron.txt', 'w').close()
+    open('/home/pi/Documents/AlarmProject/AlarmFiles/myCron.txt', 'w').close()
     writeToCrontab()
     print "All alarms deleted"
     print ""
@@ -224,18 +224,18 @@ class Alarm:
         
         #write the crontab command to a local file
         crontabString = self.minute +" "+ self.hour +" "+ self.dom +" "+ self.month +" "+ self.dow
-        crontabCommand = ' /home/pi/Documents/Alarm\ Project/AlarmFiles/myCronJob.sh' + ' '+ self.song
+        crontabCommand = ' /home/pi/Documents/AlarmProject/AlarmFiles/myCronJob.sh' + ' '+ self.song
         writeToFile(crontabString+crontabCommand+'\n')
         #now write that file to crontab
         writeToCrontab()
             
 #Helper functions for alarm class
-def writeToFile(stringToWrite, path = '/home/pi/Documents/Alarm Project/AlarmFiles/myCron.txt', action='a'):
+def writeToFile(stringToWrite, path = '/home/pi/Documents/AlarmProject/AlarmFiles/myCron.txt', action='a'):
     with open(path,action) as myfile:
         myfile.write(stringToWrite+'\n')
 
 def writeToCrontab():
-    shellCommand = "crontab /home/pi/Documents/Alarm\ Project/AlarmFiles/myCron.txt" 
+    shellCommand = "crontab /home/pi/Documents/AlarmProject/AlarmFiles/myCron.txt" 
     os.system(shellCommand)
     
 
