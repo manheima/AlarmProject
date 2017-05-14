@@ -11,7 +11,8 @@ ALARM_DIC = {'0':"Sunday",
             '3':"Wednesday",
             '4':"Thursday",
             '5':"Friday",
-            '6':"Saturday"}
+            '6':"Saturday",
+            '*':"Everyday"}
             
 
 #------------------------Main---------------------------------
@@ -75,7 +76,7 @@ def viewAlarms():
         for line in f:
             if count%3 ==0:
                 print "["+str(count/3)+"] " +line[0:-1]
-            count+=13
+            count+=1
     
 
 def addAlarm():
@@ -157,11 +158,30 @@ def deleteAlarm():
         if selection == '1':
             deleteAllAlarms()
         elif selection == '2':
-            print "I still need to write this!!!!!!!!!!!!!!!!!!!!!!!"
+            deleteSpecificAlarm()
         elif selection == '3':
             break
         else:
             print "Unknown option selected"
+
+def deleteSpecificAlarm():
+    viewAlarms()
+    print "viewAlarms"
+    indexToDelete = int(raw_input("Please select index of alarm to delete: "))
+    #open the file, read it, delete the specific lines, write it back in
+    f = open('/home/pi/Documents/AlarmProject/AlarmFiles/myCron.txt', 'r')
+    lines = f.readlines()
+    f.close()
+    f = open('/home/pi/Documents/AlarmProject/AlarmFiles/myCron.txt', 'w')
+    for lineIndex,line in enumerate(lines):
+        if (lineIndex != indexToDelete*3) and (lineIndex != (indexToDelete*3+1)) and (lineIndex != (indexToDelete*3+2)):
+            f.write(line)
+    f.close()
+    #then write txt file to cron
+    writeToCrontab()
+    print "Alarm deleted"
+
+
 
 def deleteAllAlarms():
     open('/home/pi/Documents/AlarmProject/AlarmFiles/myCron.txt', 'w').close()
