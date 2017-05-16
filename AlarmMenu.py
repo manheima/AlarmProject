@@ -22,6 +22,7 @@ def main():
     menu['2'] = "Alarm Songs"
     menu['3'] = "Set Volume"
     menu['4'] = "Exit"
+##    menu['5'] = "Debug"
     while True:
         options = menu.keys()
         options.sort()
@@ -36,6 +37,8 @@ def main():
             break
         elif selection == '3':
             setVolume()
+##        elif selection == '5':
+##            YoutubeSearch.lastFile()
         else:
             print "Unknown Option Selected: "
         #Now just skip a line
@@ -128,6 +131,7 @@ def addAlarmSong():
     menu['1'] = "Enter Youtube URL Directly"
     menu['2'] = "Put in search term"
     menu['3'] = "Return to previous menu"
+    exit = False
     while True:
         options = menu.keys()
         options.sort()
@@ -139,6 +143,7 @@ def addAlarmSong():
         elif selection == '2':
             YoutubeSearch.downloadUrl(YoutubeSearch.songSearch())
         elif selection == '3':
+            exit = True
             break
         else:
             print "Unknown option selected"
